@@ -1,6 +1,17 @@
 import React from 'react';
+import { collection, doc, getDocs, query, setDoc } from 'firebase/firestore';
+import { db } from '../firebase.config';
 
 function Home() {
+	//Retrieve the data from the database
+	const getUsers = async () => {
+		const usersCol = collection(db, 'users');
+		const userSnapshot = await getDocs(usersCol);
+		const userList = userSnapshot.docs.map((doc) => doc.data());
+		console.log(userList);
+	};
+
+	getUsers();
 	return (
 		<div className='container-fluid mt-5'>
 			<div className='container-md'>
