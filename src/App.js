@@ -1,3 +1,4 @@
+import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 
 import Navbar from './components/Navbar';
@@ -6,7 +7,7 @@ import SignUp from './pages/SignUp';
 import About from './pages/About';
 import SignIn from './pages/SignIn';
 import Contact from './pages/Contact';
-import { ToastContainer, toast } from 'react-toastify';
+import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
 function App() {

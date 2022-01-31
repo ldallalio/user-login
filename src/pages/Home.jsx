@@ -1,6 +1,6 @@
-import React, { useEffect, useState } from 'react';
-import { getAuth, updateProfile } from 'firebase/auth';
-import { useNavigate, Link } from 'react-router-dom';
+import React from 'react';
+import { getAuth } from 'firebase/auth';
+import { useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
 
 function Home() {
