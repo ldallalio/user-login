@@ -4,7 +4,10 @@ import Navbar from './components/Navbar';
 import Home from './pages/Home';
 import SignUp from './pages/SignUp';
 import About from './pages/About';
+import SignIn from './pages/SignIn';
 import Contact from './pages/Contact';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 function App() {
 	return (
@@ -12,11 +15,14 @@ function App() {
 			<Router>
 				<Navbar />
 				<Routes>
-					<Route path='/' element={<Home />} />
+					<Route path='/' element={<SignIn />} />
+					<Route path='/sign-up' element={<SignUp />} />
+					<Route path='/home' element={<Home />} />
 					<Route path='/about' element={<About />} />
 					<Route path='/contact' element={<Contact />} />
 				</Routes>
 			</Router>
+			<ToastContainer />
 		</>
 	);
 }

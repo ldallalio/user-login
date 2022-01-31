@@ -1,51 +1,26 @@
-import React from 'react';
-import { collection, doc, getDocs, query, setDoc } from 'firebase/firestore';
-import { db } from '../firebase.config';
+import React, { useEffect, useState } from 'react';
+import { getAuth, updateProfile } from 'firebase/auth';
+import { useNavigate, Link } from 'react-router-dom';
+import { toast } from 'react-toastify';
 
 function Home() {
-	//Retrieve the data from the database
-	const getUsers = async () => {
-		const usersCol = collection(db, 'users');
-		const userSnapshot = await getDocs(usersCol);
-		const userList = userSnapshot.docs.map((doc) => doc.data());
-		console.log(userList);
+	const auth = getAuth();
+	const navigate = useNavigate();
+	const onLogout = () => {
+		auth.signOut();
+		navigate('/');
+		toast.success('Logged Out Successfully');
 	};
-
-	getUsers();
 	return (
 		<div className='container-fluid mt-5'>
-			<div className='container-md'>
-				<div className='form-control shadow-lg user-login'>
-					<div className='mb-3'>
-						<label htmlFor='username' className='form-label'></label>
-						<input
-							type='text'
-							className='form-control'
-							name='username'
-							id='username'
-							aria-describedby='helpId'
-							placeholder='Username'
-						/>
-					</div>
-					<div className='mb-3'>
-						<label htmlFor='password' className='form-label'></label>
-						<input
-							type='password'
-							className='form-control'
-							name='password'
-							id='
-							password'
-							placeholder='Password'
-						/>
-					</div>
-					<div className='mb-3 login-btn'>
-						<button type='button' className='btn btn-primary'>
-							Login
-						</button>
-						<button type='button' className='btn btn-success'>
-							SignUp
-						</button>
-					</div>
+			<div className='container-md '>
+				<div className='hero  shadow-lg user-login' id='homeDiv'>
+					<h2 className='text-center text-nowrap mb-5'>
+						Welcome to the Home Page
+					</h2>
+					<button onClick={onLogout} className='btn btn-warning btn-sm  '>
+						Sign Out
+					</button>
 				</div>
 			</div>
 		</div>
